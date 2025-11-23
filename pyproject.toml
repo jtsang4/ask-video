@@ -1,0 +1,23 @@
+[project]
+name = "ask-video"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "jtsang4", email = "info@jtsang.me" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=1.0.8",
+    "langchain-google-genai>=3.1.0",
+    "langchain-openai>=1.0.3",
+    "pydantic>=2.12.4",
+    "yt-dlp>=2025.11.12",
+]
+
+[project.scripts]
+ask-video = "ask_video:main"
+
+[build-system]
+requires = ["uv_build>=0.9.11,<0.10.0"]
+build-backend = "uv_build"
