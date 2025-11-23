@@ -3,15 +3,17 @@ name = "ask-video"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "jtsang4", email = "info@jtsang.me" }
-]
+authors = [{ name = "jtsang4", email = "info@jtsang.me" }]
 requires-python = ">=3.12"
 dependencies = [
+    "click>=8.3.1",
     "langchain>=1.0.8",
     "langchain-google-genai>=3.1.0",
     "langchain-openai>=1.0.3",
+    "langchain-community>=0.0.10",
     "pydantic>=2.12.4",
+    "python-dotenv>=1.2.1",
+    "rich>=14.2.0",
     "yt-dlp>=2025.11.12",
 ]
 

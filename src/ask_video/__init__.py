@@ -1,2 +1,3 @@
-def main() -> None:
-    print("Hello from ask-video!")
+from .cli import main
+
+__all__ = ["main"]
