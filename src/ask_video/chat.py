@@ -5,6 +5,8 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
 from rich.console import Console
+from rich.markdown import Markdown
+from rich.live import Live
 
 
 console = Console(force_terminal=True)
@@ -31,7 +33,8 @@ def start_chat(subtitle_content: str):
                 "system",
                 "You are a helpful assistant. You have been provided with the subtitles of a video. "
                 "Answer the user's questions based on the video content. "
-                "If the answer is not in the video, say so.\n\n"
+                "If the answer is not in the video, say so.\n"
+                "Format your response using Markdown, often use table.\n\n"
                 "Video Subtitles:\n{subtitles}",
             ),
             MessagesPlaceholder(variable_name="history"),
@@ -78,15 +81,15 @@ def start_chat(subtitle_content: str):
                 config={"configurable": {"session_id": session_id}},
             )
 
-            console.print("[bold green]AI:[/bold green]", end=" ")
+            console.print("[bold green]AI:[/bold green]")
 
             full_response = ""
-            for chunk in response_generator:
-                console.print(chunk, end="")
-                full_response += chunk
+            with Live(Markdown(""), console=console, refresh_per_second=10) as live:
+                for chunk in response_generator:
+                    full_response += chunk
+                    live.update(Markdown(full_response))
 
             print()  # Add a newline after the full response
-            print()  # Add another newline for spacing
 
         except KeyboardInterrupt:
             console.print("\n[bold red]Exiting...[/bold red]")

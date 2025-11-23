@@ -4,6 +4,8 @@ A tool to chat with YouTube and Bilibili videos using AI.
 
 ## Features
 
+![demo](https://cdn.sa.net/2025/11/24/eszhMwAQBPgE8Nf.webp)
+
 - **Video Download**: Automatically fetches video from YouTube and Bilibili videos.
 - **AI Chat**: Uses OpenAI (or compatible) models to answer questions based on the video content.
 - **Streaming Output**: Responses are streamed in real-time for a better user experience.
