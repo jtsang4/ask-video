@@ -5,7 +5,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables.history import RunnableWithMessageHistory
 from langchain_community.chat_message_histories import ChatMessageHistory
 from rich.console import Console
-from rich.markdown import Markdown
+
 
 console = Console(force_terminal=True)
 
@@ -73,14 +73,20 @@ def start_chat(subtitle_content: str):
 
             console.print("[bold yellow]AI is thinking...[/bold yellow]")
 
-            response = with_message_history.invoke(
+            response_generator = with_message_history.stream(
                 {"subtitles": subtitle_content, "question": user_input},
                 config={"configurable": {"session_id": session_id}},
             )
 
-            console.print("[bold green]AI:[/bold green]")
-            console.print(Markdown(response))
-            print()  # Add a newline
+            console.print("[bold green]AI:[/bold green]", end=" ")
+
+            full_response = ""
+            for chunk in response_generator:
+                console.print(chunk, end="")
+                full_response += chunk
+
+            print()  # Add a newline after the full response
+            print()  # Add another newline for spacing
 
         except KeyboardInterrupt:
             console.print("\n[bold red]Exiting...[/bold red]")
