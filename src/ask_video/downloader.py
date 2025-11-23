@@ -86,10 +86,22 @@ def download_subtitles(url: str) -> Optional[str]:
             headers = {
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
             }
+            logger.info(f"Downloading subtitles from: {sub_url}")
             response = requests.get(sub_url, headers=headers)
             response.raise_for_status()
 
-            return response.text
+            content = response.text
+
+            # Try to format the content based on platform
+            if "youtube.com" in url or "youtu.be" in url:
+                from .formatters import YouTubeFormatter
+
+                formatter = YouTubeFormatter()
+                formatted_content = formatter.format(content)
+                return formatted_content
+
+            # For other platforms, return raw content for now
+            return content
 
     except Exception as e:
         logger.error(f"Error processing video: {e}")

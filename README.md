@@ -30,7 +30,7 @@ You need to have [uv](https://github.com/astral-sh/uv) installed.
 
     ```bash
     export OPENAI_BASE_URL=https://api.example.com/v1
-    export OPENAI_MODEL_ID=gpt-4o
+    export OPENAI_MODEL_ID=gpt-5-mini-2025-08-07
     ```
 
 2.  **Run with `uvx`**:
@@ -42,7 +42,7 @@ You need to have [uv](https://github.com/astral-sh/uv) installed.
     Example:
 
     ```bash
-    uvx ask-video https://www.bilibili.com/video/BV1fK4y1t7hj
+    uvx ask-video https://www.youtube.com/watch?v=RAr_TAjk51I
     ```
 
 ## Development
