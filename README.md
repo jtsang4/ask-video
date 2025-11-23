@@ -42,7 +42,7 @@ You need to have [uv](https://github.com/astral-sh/uv) installed.
     Example:
 
     ```bash
-    uvx ask-video https://www.youtube.com/watch?v=RAr_TAjk51I
+    uvx ask-video https://www.youtube.com/watch?v=qjPH9njnaVU
     ```
 
 ## Development

@@ -21,7 +21,7 @@ def main(url):
     """
     console.print(f"[bold cyan]Processing video:[/bold cyan] {url}")
 
-    with console.status("[bold green]Downloading subtitles...[/bold green]"):
+    with console.status("[bold green]Downloading...[/bold green]"):
         subtitles = download_subtitles(url)
 
     if not subtitles:
@@ -30,7 +30,7 @@ def main(url):
         )
         return
 
-    console.print("[bold green]Subtitles downloaded successfully![/bold green]")
+    console.print("[bold green]Downloaded successfully![/bold green]")
 
     # Optional: Print a snippet of subtitles to verify
     # console.print(f"Subtitle snippet: {subtitles[:200]}...")
