@@ -68,6 +68,10 @@ To develop or contribute to this project:
     ```bash
     uv run ask-video <URL>
     ```
+## TODO list
+
+- [ ] Support local ASR model to transcribe videos
+- [ ] Add GUI for easier use
 
 ## License
 
